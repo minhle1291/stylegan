@@ -14,6 +14,7 @@ import PIL.Image
 import dnnlib
 import dnnlib.tflib as tflib
 import config
+import random
 
 def main(trial=0):
     # Initialize TensorFlow.
@@ -32,7 +33,7 @@ def main(trial=0):
     Gs.print_layers()
 
     # Pick latent vector.
-    rnd = np.random.RandomState(2**31)
+    rnd = np.random.RandomState(random.randint(1,2**32-1))
     latents = rnd.randn(1, Gs.input_shape[1])
 
     # Generate image.
